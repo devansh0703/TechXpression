@@ -18,66 +18,79 @@
 </p>
 <br>
 
-## 🔗 Table of Contents
+##  Table of Contents
 
-- [📍 Overview](#-overview)
-- [👾 Features](#-features)
-- [📁 Project Structure](#-project-structure)
-  - [📂 Project Index](#-project-index)
-- [🚀 Getting Started](#-getting-started)
-  - [☑️ Prerequisites](#-prerequisites)
-  - [⚙️ Installation](#-installation)
-  - [🤖 Usage](#🤖-usage)
-  - [🧪 Testing](#🧪-testing)
-- [📌 Project Roadmap](#-project-roadmap)
-- [🔰 Contributing](#-contributing)
-- [🎗 License](#-license)
-- [🙌 Acknowledgments](#-acknowledgments)
+- [ Overview](#-overview)
+- [ Features](#-features)
+- [ Project Structure](#-project-structure)
+  - [ Project Index](#-project-index)
+- [ Getting Started](#-getting-started)
+  - [ Prerequisites](#-prerequisites)
+  - [ Installation](#-installation)
+  - [ Usage](#-usage)
+  - [ Testing](#-testing)
+- [ Project Roadmap](#-project-roadmap)
+- [ Contributing](#-contributing)
+- [ License](#-license)
+- [ Acknowledgments](#-acknowledgments)
 
 ---
 
-## 📍 Overview
+##  Overview
 
 <code>❯ REPLACE-ME</code>
 
 ---
 
-## 👾 Features
+##  Features
 
 <code>❯ REPLACE-ME</code>
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```sh
 └── TechXpression/
+    ├── README.md
     ├── eslint.config.js
     ├── index.html
     ├── package-lock.json
     ├── package.json
     ├── postcss.config.js
+    ├── public
+    │   └── vite.svg
     ├── src
-    │   ├── App.tsx
+    │   ├── App.css
+    │   ├── App.jsx
+    │   ├── assets
+    │   │   └── react.svg
     │   ├── components
-    │   │   ├── Blog.jsx
+    │   │   ├── AccordionItem.jsx
     │   │   ├── BlogList.jsx
-    │   │   ├── Main.jsx
-    │   │   └── Quiz.jsx
+    │   │   ├── Navbar.jsx
+    │   │   ├── TimelineDemo.jsx
+    │   │   └── ui
+    │   │       ├── timeline.jsx
+    │   │       └── vortex.jsx
     │   ├── data
     │   │   └── safetyTopics.js
     │   ├── index.css
-    │   ├── main.tsx
-    │   └── vite-env.d.ts
+    │   ├── lib
+    │   │   └── utils.js
+    │   ├── main.jsx
+    │   └── pages
+    │       ├── Blog.jsx
+    │       ├── Info.jsx
+    │       ├── Landing.jsx
+    │       ├── Quiz.jsx
+    │       └── Tutorial.jsx
     ├── tailwind.config.js
-    ├── tsconfig.app.json
-    ├── tsconfig.json
-    ├── tsconfig.node.json
-    └── vite.config.ts
+    └── vite.config.js
 ```
 
 
-### 📂 Project Index
+###  Project Index
 <details open>
 	<summary><b><code>TECHXPRESSION/</code></b></summary>
 	<details> <!-- __root__ Submodule -->
@@ -89,15 +102,7 @@
 				<td><code>❯ REPLACE-ME</code></td>
 			</tr>
 			<tr>
-				<td><b><a href='https://github.com/devansh0703/TechXpression/blob/master/tsconfig.node.json'>tsconfig.node.json</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
 				<td><b><a href='https://github.com/devansh0703/TechXpression/blob/master/package-lock.json'>package-lock.json</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/devansh0703/TechXpression/blob/master/tsconfig.json'>tsconfig.json</a></b></td>
 				<td><code>❯ REPLACE-ME</code></td>
 			</tr>
 			<tr>
@@ -105,15 +110,11 @@
 				<td><code>❯ REPLACE-ME</code></td>
 			</tr>
 			<tr>
-				<td><b><a href='https://github.com/devansh0703/TechXpression/blob/master/tsconfig.app.json'>tsconfig.app.json</a></b></td>
+				<td><b><a href='https://github.com/devansh0703/TechXpression/blob/master/vite.config.js'>vite.config.js</a></b></td>
 				<td><code>❯ REPLACE-ME</code></td>
 			</tr>
 			<tr>
 				<td><b><a href='https://github.com/devansh0703/TechXpression/blob/master/package.json'>package.json</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
-				<td><b><a href='https://github.com/devansh0703/TechXpression/blob/master/vite.config.ts'>vite.config.ts</a></b></td>
 				<td><code>❯ REPLACE-ME</code></td>
 			</tr>
 			<tr>
@@ -132,40 +133,93 @@
 		<blockquote>
 			<table>
 			<tr>
-				<td><b><a href='https://github.com/devansh0703/TechXpression/blob/master/src/main.tsx'>main.tsx</a></b></td>
-				<td><code>❯ REPLACE-ME</code></td>
-			</tr>
-			<tr>
 				<td><b><a href='https://github.com/devansh0703/TechXpression/blob/master/src/index.css'>index.css</a></b></td>
 				<td><code>❯ REPLACE-ME</code></td>
 			</tr>
 			<tr>
-				<td><b><a href='https://github.com/devansh0703/TechXpression/blob/master/src/App.tsx'>App.tsx</a></b></td>
+				<td><b><a href='https://github.com/devansh0703/TechXpression/blob/master/src/App.css'>App.css</a></b></td>
 				<td><code>❯ REPLACE-ME</code></td>
 			</tr>
 			<tr>
-				<td><b><a href='https://github.com/devansh0703/TechXpression/blob/master/src/vite-env.d.ts'>vite-env.d.ts</a></b></td>
+				<td><b><a href='https://github.com/devansh0703/TechXpression/blob/master/src/App.jsx'>App.jsx</a></b></td>
+				<td><code>❯ REPLACE-ME</code></td>
+			</tr>
+			<tr>
+				<td><b><a href='https://github.com/devansh0703/TechXpression/blob/master/src/main.jsx'>main.jsx</a></b></td>
 				<td><code>❯ REPLACE-ME</code></td>
 			</tr>
 			</table>
+			<details>
+				<summary><b>lib</b></summary>
+				<blockquote>
+					<table>
+					<tr>
+						<td><b><a href='https://github.com/devansh0703/TechXpression/blob/master/src/lib/utils.js'>utils.js</a></b></td>
+						<td><code>❯ REPLACE-ME</code></td>
+					</tr>
+					</table>
+				</blockquote>
+			</details>
 			<details>
 				<summary><b>components</b></summary>
 				<blockquote>
 					<table>
 					<tr>
-						<td><b><a href='https://github.com/devansh0703/TechXpression/blob/master/src/components/Blog.jsx'>Blog.jsx</a></b></td>
+						<td><b><a href='https://github.com/devansh0703/TechXpression/blob/master/src/components/Navbar.jsx'>Navbar.jsx</a></b></td>
 						<td><code>❯ REPLACE-ME</code></td>
 					</tr>
 					<tr>
-						<td><b><a href='https://github.com/devansh0703/TechXpression/blob/master/src/components/Main.jsx'>Main.jsx</a></b></td>
+						<td><b><a href='https://github.com/devansh0703/TechXpression/blob/master/src/components/AccordionItem.jsx'>AccordionItem.jsx</a></b></td>
+						<td><code>❯ REPLACE-ME</code></td>
+					</tr>
+					<tr>
+						<td><b><a href='https://github.com/devansh0703/TechXpression/blob/master/src/components/TimelineDemo.jsx'>TimelineDemo.jsx</a></b></td>
 						<td><code>❯ REPLACE-ME</code></td>
 					</tr>
 					<tr>
 						<td><b><a href='https://github.com/devansh0703/TechXpression/blob/master/src/components/BlogList.jsx'>BlogList.jsx</a></b></td>
 						<td><code>❯ REPLACE-ME</code></td>
 					</tr>
+					</table>
+					<details>
+						<summary><b>ui</b></summary>
+						<blockquote>
+							<table>
+							<tr>
+								<td><b><a href='https://github.com/devansh0703/TechXpression/blob/master/src/components/ui/timeline.jsx'>timeline.jsx</a></b></td>
+								<td><code>❯ REPLACE-ME</code></td>
+							</tr>
+							<tr>
+								<td><b><a href='https://github.com/devansh0703/TechXpression/blob/master/src/components/ui/vortex.jsx'>vortex.jsx</a></b></td>
+								<td><code>❯ REPLACE-ME</code></td>
+							</tr>
+							</table>
+						</blockquote>
+					</details>
+				</blockquote>
+			</details>
+			<details>
+				<summary><b>pages</b></summary>
+				<blockquote>
+					<table>
 					<tr>
-						<td><b><a href='https://github.com/devansh0703/TechXpression/blob/master/src/components/Quiz.jsx'>Quiz.jsx</a></b></td>
+						<td><b><a href='https://github.com/devansh0703/TechXpression/blob/master/src/pages/Tutorial.jsx'>Tutorial.jsx</a></b></td>
+						<td><code>❯ REPLACE-ME</code></td>
+					</tr>
+					<tr>
+						<td><b><a href='https://github.com/devansh0703/TechXpression/blob/master/src/pages/Info.jsx'>Info.jsx</a></b></td>
+						<td><code>❯ REPLACE-ME</code></td>
+					</tr>
+					<tr>
+						<td><b><a href='https://github.com/devansh0703/TechXpression/blob/master/src/pages/Blog.jsx'>Blog.jsx</a></b></td>
+						<td><code>❯ REPLACE-ME</code></td>
+					</tr>
+					<tr>
+						<td><b><a href='https://github.com/devansh0703/TechXpression/blob/master/src/pages/Landing.jsx'>Landing.jsx</a></b></td>
+						<td><code>❯ REPLACE-ME</code></td>
+					</tr>
+					<tr>
+						<td><b><a href='https://github.com/devansh0703/TechXpression/blob/master/src/pages/Quiz.jsx'>Quiz.jsx</a></b></td>
 						<td><code>❯ REPLACE-ME</code></td>
 					</tr>
 					</table>
@@ -176,17 +230,17 @@
 </details>
 
 ---
-## 🚀 Getting Started
+##  Getting Started
 
-### ☑️ Prerequisites
+###  Prerequisites
 
 Before getting started with TechXpression, ensure your runtime environment meets the following requirements:
 
-- **Programming Language:** Error detecting primary_language: {'js': 3, 'json': 5, 'ts': 2, 'html': 1, 'tsx': 2, 'css': 1, 'jsx': 4}
+- **Programming Language:** JavaScript
 - **Package Manager:** Npm
 
 
-### ⚙️ Installation
+###  Installation
 
 Install TechXpression using one of the following methods:
 
@@ -205,30 +259,30 @@ Install TechXpression using one of the following methods:
 3. Install the project dependencies:
 
 
-**Using `npm`** &nbsp; [<img align="center" src="" />]()
+**Using `npm`** &nbsp; [<img align="center" src="https://img.shields.io/badge/npm-CB3837.svg?style={badge_style}&logo=npm&logoColor=white" />](https://www.npmjs.com/)
 
 ```sh
-❯ echo 'INSERT-INSTALL-COMMAND-HERE'
+❯ npm install
 ```
 
 
 
 
-### 🤖 Usage
+###  Usage
 Run TechXpression using the following command:
-**Using `npm`** &nbsp; [<img align="center" src="" />]()
+**Using `npm`** &nbsp; [<img align="center" src="https://img.shields.io/badge/npm-CB3837.svg?style={badge_style}&logo=npm&logoColor=white" />](https://www.npmjs.com/)
 
 ```sh
-❯ npm run dev'
+❯ npm start
 ```
 
 
-### 🧪 Testing
+###  Testing
 Run the test suite using the following command:
-**Using `npm`** &nbsp; [<img align="center" src="" />]()
+**Using `npm`** &nbsp; [<img align="center" src="https://img.shields.io/badge/npm-CB3837.svg?style={badge_style}&logo=npm&logoColor=white" />](https://www.npmjs.com/)
 
 ```sh
-❯ echo 'INSERT-TEST-COMMAND-HERE'
+❯ npm test
 ```
 
 
@@ -241,7 +295,7 @@ Run the test suite using the following command:
 
 ---
 
-## 🔰 Contributing
+##  Contributing
 
 - **💬 [Join the Discussions](https://github.com/devansh0703/TechXpression/discussions)**: Share your insights, provide feedback, or ask questions.
 - **🐛 [Report Issues](https://github.com/devansh0703/TechXpression/issues)**: Submit bugs found or log feature requests for the `TechXpression` project.
@@ -281,5 +335,17 @@ Run the test suite using the following command:
    </a>
 </p>
 </details>
+
+---
+
+##  License
+
+This project is protected under the [SELECT-A-LICENSE](https://choosealicense.com/licenses) License. For more details, refer to the [LICENSE](https://choosealicense.com/licenses/) file.
+
+---
+
+##  Acknowledgments
+
+- List any resources, contributors, inspiration, etc. here.
 
 ---
