@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "@google/generative-ai": "^0.2.1",
-    "@langchain/core": "^0.1.48",
-    "@langchain/groq": "^0.0.3",
+    "@langchain/community": "^0.3.28",
+    "@langchain/core": "^0.3.37",
+    "dotenv": "^16.4.7",
+    "langchain": "^0.3.15",
     "lucide-react": "^0.344.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"

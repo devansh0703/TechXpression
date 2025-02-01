@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { ChatGroq } from "@langchain/groq";
-import { SystemMessage, HumanMessage } from "@langchain/core/messages";
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { ChatGroq } from '@langchain/groq';
+import { SystemMessage, HumanMessage } from '@langchain/core/messages';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 import { safetyTopics } from '../data/safetyTopics';
 
 const Main = () => {
@@ -21,15 +21,15 @@ const Main = () => {
   const initializeGroq = () => {
     try {
       const apiKey = import.meta.env.VITE_GROQ_API_KEY;
-      
+
       if (!apiKey || apiKey === 'your-api-key') {
         throw new Error('Please set a valid GROQ API key in your .env file');
       }
 
       const groqModel = new ChatGroq({
         apiKey,
-        modelName: "mixtral-8x7b-32768", // Changed from model to modelName
-        temperature: 0
+        modelName: 'mixtral-8x7b-32768', // Changed from model to modelName
+        temperature: 0,
       });
 
       setModel(groqModel);
@@ -38,17 +38,18 @@ const Main = () => {
     }
   };
 
-  const createSystemMessage = () => new SystemMessage(
-    "You are a social engineer and a human psychology expert, your job is to analyse email and SMS chats. Now since you are expert in social engineering and human psychology your job is to detect whether there is possible phishing, pretexting or baiting attempt made, remember to not underestimate pretexting and baiting, as they might be chained to phishing as a follow up scam. You need to return the answer in a structured way which is given below:" + 
-    "1) Is there an attempt of phishing(all types), pretexting or baiting? If yes then which one and how much percent you can assure that you are right and explain why you think it is that particular type." + 
-    "2) Name of the manipulation tactic(eg: Scarcity, Urgency) and their definition:" + 
-    "3) How did you identify the attempt and the tactic used:" + 
-    "4) How do I identify such attempts and tactics in the future, i.e. tips and tricks to spot them:" + 
-    "5) How to avoid such things in future, what steps should be taken." + 
-    "6) How to respond to such incidents." + 
-    "7) What is the appropriate response in the given case." + 
-    "You are responsible for the security of the organisation from such social engineering attacks, make sure to analyse the input thoroughly, even analysing subtle linguistic inconsistencies like spelling errors or grammatical errors, take spoofing risks into consideration also and categorize the type of phishing(eg: smishing, whaling, etc) wherever necessary and make an unbiased and proper judgement along with in-depth analyses in such a way that the employee understands it clearly.Give a comprehensive analysis for each point."
-  );
+  const createSystemMessage = () =>
+    new SystemMessage(
+      'You are a social engineer and a human psychology expert, your job is to analyse email and SMS chats. Now since you are expert in social engineering and human psychology your job is to detect whether there is possible phishing, pretexting or baiting attempt made, remember to not underestimate pretexting and baiting, as they might be chained to phishing as a follow up scam. You need to return the answer in a structured way which is given below:' +
+        '1) Is there an attempt of phishing(all types), pretexting or baiting? If yes then which one and how much percent you can assure that you are right and explain why you think it is that particular type.' +
+        '2) Name of the manipulation tactic(eg: Scarcity, Urgency) and their definition:' +
+        '3) How did you identify the attempt and the tactic used:' +
+        '4) How do I identify such attempts and tactics in the future, i.e. tips and tricks to spot them:' +
+        '5) How to avoid such things in future, what steps should be taken.' +
+        '6) How to respond to such incidents.' +
+        '7) What is the appropriate response in the given case.' +
+        'You are responsible for the security of the organisation from such social engineering attacks, make sure to analyse the input thoroughly, even analysing subtle linguistic inconsistencies like spelling errors or grammatical errors, take spoofing risks into consideration also and categorize the type of phishing(eg: smishing, whaling, etc) wherever necessary and make an unbiased and proper judgement along with in-depth analyses in such a way that the employee understands it clearly.Give a comprehensive analysis for each point.'
+    );
 
   const handleAnalyze = async () => {
     if (!userInput.trim()) {
@@ -63,11 +64,8 @@ const Main = () => {
 
     setLoading(true);
     try {
-      const messages = [
-        createSystemMessage(),
-        new HumanMessage(userInput)
-      ];
-      
+      const messages = [createSystemMessage(), new HumanMessage(userInput)];
+
       const response = await model.invoke(messages);
       setResult(response.content);
     } catch (error) {
@@ -92,18 +90,24 @@ const Main = () => {
 
     setLoading(true);
     try {
-      const genAI = new GoogleGenerativeAI("AIzaSyCyoasSyFVFvbh_wCZX6U6QAiq57nJqbOA");
-      const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-      
-      const topic = safetyTopics.topics.find(t => t.id === Number(selectedTopic));
-      const subtopic = topic.subtopics.find(s => s.id === Number(selectedSubtopic));
-      
+      const genAI = new GoogleGenerativeAI(
+        'AIzaSyCyoasSyFVFvbh_wCZX6U6QAiq57nJqbOA'
+      );
+      const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
+
+      const topic = safetyTopics.topics.find(
+        (t) => t.id === Number(selectedTopic)
+      );
+      const subtopic = topic.subtopics.find(
+        (s) => s.id === Number(selectedSubtopic)
+      );
+
       const prompt = `Explain ${subtopic.title} and provide 5 key points to look out for when recognizing such attacks.`;
-      
+
       const result = await model.generateContent(prompt);
       const response = await result.response;
       const output = await response.text();
-      
+
       setExplanation(output);
     } catch (error) {
       setExplanation(`Error generating explanation: ${error.message}`);
@@ -118,7 +122,10 @@ const Main = () => {
         <div className="error">
           <h2>Configuration Error</h2>
           <p>{error}</p>
-          <p>Please check your .env file and ensure you have set a valid GROQ API key.</p>
+          <p>
+            Please check your .env file and ensure you have set a valid GROQ API
+            key.
+          </p>
         </div>
       </div>
     );
@@ -128,16 +135,13 @@ const Main = () => {
     <div className="container">
       <h1>Social Engineering Detection</h1>
       <div className="input-section">
-        <textarea 
+        <textarea
           value={userInput}
           onChange={(e) => setUserInput(e.target.value)}
           placeholder="Paste your suspicious chat or email content here for analysis..."
           rows="6"
         />
-        <button 
-          onClick={handleAnalyze}
-          disabled={loading || !userInput.trim()}
-        >
+        <button onClick={handleAnalyze} disabled={loading || !userInput.trim()}>
           {loading ? 'Analyzing...' : 'Analyze Content'}
         </button>
       </div>
@@ -157,7 +161,7 @@ const Main = () => {
             Select a Topic:
             <select value={selectedTopic} onChange={handleTopicChange}>
               <option value="">Select a topic</option>
-              {safetyTopics.topics.map(topic => (
+              {safetyTopics.topics.map((topic) => (
                 <option key={topic.id} value={topic.id}>
                   {topic.title}
                 </option>
@@ -165,7 +169,7 @@ const Main = () => {
             </select>
           </label>
         </div>
-        
+
         {selectedTopic && (
           <div className="subtopic-selection">
             <label>
@@ -173,8 +177,8 @@ const Main = () => {
               <select value={selectedSubtopic} onChange={handleSubtopicChange}>
                 <option value="">Select a subtopic</option>
                 {safetyTopics.topics
-                  .find(t => t.id === Number(selectedTopic))
-                  ?.subtopics.map(subtopic => (
+                  .find((t) => t.id === Number(selectedTopic))
+                  ?.subtopics.map((subtopic) => (
                     <option key={subtopic.id} value={subtopic.id}>
                       {subtopic.title}
                     </option>
@@ -185,7 +189,7 @@ const Main = () => {
         )}
 
         <div className="explanation-section">
-          <button 
+          <button
             onClick={handleGetExplanation}
             disabled={loading || !selectedTopic || !selectedSubtopic}
           >
