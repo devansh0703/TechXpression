@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
-import { GoogleGenerativeAI } from '@google/generative-ai';
-import { safetyTopics } from '../data/safetyTopics';
+import React, { useState } from "react";
+import { GoogleGenerativeAI } from "@google/generative-ai";
+import { safetyTopics } from "../data/safetyTopics";
 
 const Quiz = () => {
-  const [selectedTopic, setSelectedTopic] = useState('');
-  const [selectedSubtopic, setSelectedSubtopic] = useState('');
-  const [userAnswer, setUserAnswer] = useState('');
-  const [feedback, setFeedback] = useState('');
+  const [selectedTopic, setSelectedTopic] = useState("");
+  const [selectedSubtopic, setSelectedSubtopic] = useState("");
+  const [userAnswer, setUserAnswer] = useState("");
+  const [feedback, setFeedback] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleTopicChange = (e) => {
     setSelectedTopic(e.target.value);
-    setSelectedSubtopic('');
-    setFeedback('');
+    setSelectedSubtopic("");
+    setFeedback("");
   };
 
   const handleSubtopicChange = (e) => {
     setSelectedSubtopic(e.target.value);
-    setFeedback('');
+    setFeedback("");
   };
 
   const handleSubmitAnswer = async () => {
@@ -27,11 +27,17 @@ const Quiz = () => {
 
     setLoading(true);
     try {
-      const genAI = new GoogleGenerativeAI('AIzaSyCyoasSyFVFvbh_wCZX6U6QAiq57nJqbOA');
-      const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
+      const genAI = new GoogleGenerativeAI(
+        "AIzaSyCyoasSyFVFvbh_wCZX6U6QAiq57nJqbOA"
+      );
+      const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
-      const topic = safetyTopics.topics.find((t) => t.id === Number(selectedTopic));
-      const subtopic = topic.subtopics.find((s) => s.id === Number(selectedSubtopic));
+      const topic = safetyTopics.topics.find(
+        (t) => t.id === Number(selectedTopic)
+      );
+      const subtopic = topic.subtopics.find(
+        (s) => s.id === Number(selectedSubtopic)
+      );
 
       const prompt = `You are a social engineering and human psychology trainer in an organization who trains employees who uses the Socratic method. The topic is ${topic.title}, ${subtopic.title}, and the student's response is: "${userAnswer}". 
       
@@ -56,18 +62,21 @@ const Quiz = () => {
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-lg">
-      <h2 className="text-2xl font-bold mb-6">Social Engineering Quiz</h2>
-      
-      <div className="space-y-6">
+    <div className="bg-black text-white p-8 rounded-xl shadow-lg w-full">
+      <h2 className="text-4xl font-bold mb-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600 shadow-lg">
+        Social Engineering Quiz
+      </h2>
+
+      <div className="space-y-8">
+        {/* Topic Selection */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-xl font-medium mb-2">
             Select Topic:
           </label>
           <select
             value={selectedTopic}
             onChange={handleTopicChange}
-            className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full p-4 bg-gray-800 text-white border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
           >
             <option value="">Select a topic</option>
             {safetyTopics.topics.map((topic) => (
@@ -78,15 +87,16 @@ const Quiz = () => {
           </select>
         </div>
 
+        {/* Subtopic Selection */}
         {selectedTopic && (
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-xl font-medium mb-2">
               Select Subtopic:
             </label>
             <select
               value={selectedSubtopic}
               onChange={handleSubtopicChange}
-              className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full p-4 bg-gray-800 text-white border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
             >
               <option value="">Select a subtopic</option>
               {safetyTopics.topics
@@ -100,31 +110,35 @@ const Quiz = () => {
           </div>
         )}
 
+        {/* User Answer */}
         {selectedTopic && selectedSubtopic && (
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-xl font-medium mb-2">
               Your Answer:
             </label>
             <textarea
               value={userAnswer}
               onChange={(e) => setUserAnswer(e.target.value)}
               placeholder="Share your understanding of this topic..."
-              className="w-full p-3 border rounded-lg min-h-[150px] focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full p-4 bg-gray-800 text-white border border-gray-600 rounded-lg min-h-[150px] focus:outline-none focus:ring-2 focus:ring-green-500"
             />
             <button
               onClick={handleSubmitAnswer}
               disabled={loading || !userAnswer.trim()}
-              className="mt-4 w-full"
+              className="mt-6 w-full py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 disabled:bg-gray-500"
             >
-              {loading ? 'Getting Feedback...' : 'Submit Answer'}
+              {loading ? "Getting Feedback..." : "Submit Answer"}
             </button>
           </div>
         )}
 
+        {/* Feedback */}
         {feedback && (
           <div className="mt-6">
-            <h3 className="text-lg font-semibold mb-3">Teacher's Feedback:</h3>
-            <div className="p-4 bg-blue-50 rounded-lg whitespace-pre-wrap">
+            <h3 className="text-xl font-semibold mb-3 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600">
+              Teacher's Feedback:
+            </h3>
+            <div className="p-4 bg-green-900 text-white rounded-lg whitespace-pre-wrap">
               {feedback}
             </div>
           </div>
